@@ -89,6 +89,22 @@ describe('Spell Model', function() {
         })
       })
     })
+    describe('Casting Time Attribute', function() {
+      it('Should Return an Object With The Action Attribute', function() {
+        const spellInfo = {
+          name: 'Fireball',
+          description: 'A Ball of Fire',
+          level: 3,
+          school: 'Evocation',
+          castingTime: '1 Action'
+        }
+
+        const newSpell = new Spell(spellInfo);
+        expect(newSpell).to.have.a.property('castingTime');
+        expect(newSpell.castingTime).to.be.a('string');
+        expect(newSpell.castingTime).to.equal('1 Action');
+      })
+    })
   })
   
 })

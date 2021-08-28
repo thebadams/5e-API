@@ -19,7 +19,9 @@ const spellSchema = new Schema({
   school: {
     type: String,
     required: [true, 'Please Provide a Spell School']
-  }
+  },
+  
+  castingTime: String
 })
 
 const Spell = model('Spell', spellSchema);
