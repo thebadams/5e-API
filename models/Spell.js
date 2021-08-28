@@ -24,6 +24,10 @@ const spellSchema = new Schema({
   castingTime: {
     type: String,
     required: [true, 'Please Provide a Casting Time']
+  },
+
+  range: {
+    type: String
   }
 })
 

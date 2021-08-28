@@ -120,6 +120,23 @@ describe('Spell Model', function() {
         })
       })
     })
+    describe('Range Attribute', function() {
+      it('Should Return An Object With a Range Property', function() {
+        const spellInfo = {
+          name: 'Fireball',
+          description: 'A Ball of Fire',
+          level: 3,
+          school: 'Evocation',
+          castingTime: '1 Action',
+          range: '60 Feet'
+        }
+
+        const newSpell = new Spell(spellInfo);
+        expect(newSpell).to.have.property('range')
+        expect(newSpell.range).to.be.a('string');
+        expect(newSpell.range).to.equal('60 Feet')
+      })
+    })
   })
   
 })
