@@ -4,6 +4,11 @@ const spellSchema = new Schema({
   name: {
     type: String,
     required: [true, 'Please Pass In a Name']
+  },
+
+  description: {
+    type: String,
+    required: [true, 'Please Pass In a Description'] 
   }
 })
 
