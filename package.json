@@ -1,0 +1,27 @@
+{
+  "name": "5e-api",
+  "version": "1.0.0",
+  "description": "5e API",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thebadams/5e-API.git"
+  },
+  "author": "thebadams",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thebadams/5e-API/issues"
+  },
+  "homepage": "https://github.com/thebadams/5e-API#readme",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^9.1.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.2"
+  }
+}
