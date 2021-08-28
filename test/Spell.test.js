@@ -104,6 +104,20 @@ describe('Spell Model', function() {
         expect(newSpell.castingTime).to.be.a('string');
         expect(newSpell.castingTime).to.equal('1 Action');
       })
+      it('Should Throw A Validation Error If No Casting Time Is Provided', function() {
+        const badSpellInfo = {
+          name: 'Fireball',
+          description: 'A Ball of Fire',
+          level: 3,
+          school: 'Evocation',
+          castingtime: '1 Action'
+        }
+
+        const newSpell = new Spell(badSpellInfo);
+        newSpell.validate(function(error) {
+          expect(error.errors.castingTime).to.exist
+        })
+      })
     })
   })
   
