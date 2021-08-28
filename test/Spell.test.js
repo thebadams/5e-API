@@ -27,11 +27,18 @@ describe('Spell Model', function() {
       })
     })
     it('Should Return an object with description attribute ', function() {
-      const newSpell = new Spell({ name: 'Fireball', description: 'A Ball of Fire' })
-      console.log(newSpell)
+      const newSpell = new Spell({ name: 'Fireball', description: 'A Ball of Fire' });
       expect(newSpell).to.have.a.property('description');
       expect(newSpell.description).to.be.a('string');
       expect(newSpell.description).to.equal('A Ball of Fire');
+    })
+    it('Should Throw a Validation Error If No Description is Provided', function() {
+      const newSpell = new Spell({name: 'Fireball', descr: 'A Ball of Fire'});
+
+      newSpell.validate(function(error) {
+        expect(error.errors.description).to.exist;
+        expect(error.errors.description.message).to.equal('Please Pass In a Description')
+      })
     })
   })
   
