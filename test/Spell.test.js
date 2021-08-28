@@ -10,4 +10,21 @@ describe('Spell Model', function() {
     const newSpell = new Spell();
     expect(newSpell).to.be.an.instanceOf(Spell)
   })
+  describe('Spell Instance Creation', function() {
+    it('Should Return an object with a name attribute when created', function() {
+    const newSpell = new Spell({name: 'Fireball'})
+    expect(newSpell).to.be.an.instanceOf(Spell);
+    expect(newSpell).to.have.a.property('name');
+    expect(newSpell.name).to.equal('Fireball');
+    })
+    it('Should Throw An Error If No Name Is Provided', function() {
+    const newSpell = new Spell({nam: 'Fireball'});
+    newSpell.validate(function(error) {
+      expect(error.errors.name).to.exist
+      expect(error.errors.name.message).to.equal('Please Pass In a Name')
+      })
+    })
+    it('Shou')
+  })
+  
 })
