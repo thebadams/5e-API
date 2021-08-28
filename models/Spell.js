@@ -8,7 +8,12 @@ const spellSchema = new Schema({
 
   description: {
     type: String,
-    required: [true, 'Please Pass In a Description'] 
+    required: [true, 'Please Pass In a Description']
+  },
+  
+  level: {
+    type: Number,
+    required: [true, 'Please Provide a Level Attribute']
   }
 })
 

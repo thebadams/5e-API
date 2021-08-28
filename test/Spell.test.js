@@ -44,6 +44,35 @@ describe('Spell Model', function() {
         })
       })
     })
+    describe('Level Attribute', function() {
+      it('Should Return an object with a level attribute', function() {
+        const newSpell = new Spell({ name: 'Fireball', description: 'A Ball of Fire', level: 3 })
+        expect(newSpell).to.have.a.property('level');
+        expect(newSpell.level).to.be.a('number');
+        expect(newSpell.level).to.equal(3)
+      })
+      it('Should Throw a Validation Error If No Level Is Provided', function() {
+        const newSpell = new Spell({ name: 'Fireball', description: 'A Ball of Fire', lvl: 3})
+
+        newSpell.validate(function(error) {
+          expect(error.errors.level).to.exist;
+          expect(error.errors.level.message).to.equal('Please Provide a Level Attribute');
+        })
+      })
+    })
+    describe('School Attribute', function() {
+      it('Should Return an Object with a School Attribute', function() {
+        const spellInfo = {
+          name: 'Fireball',
+          description: 'A Ball of Fire',
+          level: 3,
+          school: 'Evocation'
+        }
+        const newSpell = new Spell(spellInfo);
+
+        expect(newSpell).to.have.property('school')
+      })
+    })
   })
   
 })
