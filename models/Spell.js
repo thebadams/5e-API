@@ -17,7 +17,8 @@ const spellSchema = new Schema({
   },
 
   school: {
-    type: String
+    type: String,
+    required: [true, 'Please Provide a Spell School']
   }
 })
 

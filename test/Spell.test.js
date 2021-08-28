@@ -74,6 +74,20 @@ describe('Spell Model', function() {
         expect(newSpell.school).to.be.a('string');
         expect(newSpell.school).to.equal('Evocation');
       })
+      it('Should Throw A Validation Error If No School Is Provided', function() {
+        const badSpellInfo = {
+          name: 'Fireball',
+          description: 'A Ball of Fire',
+          level: 3,
+          schol: 'Evocation'
+        }
+        const newSpell = new Spell(badSpellInfo);
+
+        newSpell.validate(function(error) {
+          expect(error.errors.school).to.exist;
+          expect(error.errors.school.message).to.equal('Please Provide a Spell School');
+        })
+      })
     })
   })
   
