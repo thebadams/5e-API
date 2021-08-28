@@ -70,7 +70,9 @@ describe('Spell Model', function() {
         }
         const newSpell = new Spell(spellInfo);
 
-        expect(newSpell).to.have.property('school')
+        expect(newSpell).to.have.property('school');
+        expect(newSpell.school).to.be.a('string');
+        expect(newSpell.school).to.equal('Evocation');
       })
     })
   })

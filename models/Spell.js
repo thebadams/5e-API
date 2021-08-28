@@ -14,6 +14,10 @@ const spellSchema = new Schema({
   level: {
     type: Number,
     required: [true, 'Please Provide a Level Attribute']
+  },
+
+  school: {
+    type: String
   }
 })
 
