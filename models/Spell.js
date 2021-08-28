@@ -5,5 +5,4 @@ const spellSchema = new Schema({
 })
 
 const Spell = model('Spell', spellSchema);
-
 module.exports = Spell;
