@@ -27,7 +27,8 @@ const spellSchema = new Schema({
   },
 
   range: {
-    type: String
+    type: String,
+    required: [true, 'Please Provide A Range Value']
   }
 })
 

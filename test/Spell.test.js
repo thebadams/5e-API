@@ -136,6 +136,23 @@ describe('Spell Model', function() {
         expect(newSpell.range).to.be.a('string');
         expect(newSpell.range).to.equal('60 Feet')
       })
+      it('Should Throw a Validation Error If No Range Is Passed', function() {
+        const badSpellInfo = {
+          name: 'Fireball',
+          description: 'A Ball of Fire',
+          level: 3,
+          school: 'Evocation',
+          castingTime: '1 Action',
+          rnge: '60 Feet'
+        }
+
+        const newSpell = new Spell(badSpellInfo);
+
+        newSpell.validate(function(error) {
+          expect(error.errors.range).to.exist;
+          expect(error.errors.range.message).to.equal('Please Provide A Range Value')
+        })
+      })
     })
   })
   
