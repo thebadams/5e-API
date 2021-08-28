@@ -116,6 +116,7 @@ describe('Spell Model', function() {
         const newSpell = new Spell(badSpellInfo);
         newSpell.validate(function(error) {
           expect(error.errors.castingTime).to.exist
+          expect(error.errors.castingTime.message).to.equal('Please Provide a Casting Time')
         })
       })
     })
