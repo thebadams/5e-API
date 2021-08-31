@@ -59,6 +59,18 @@ describe('Spell Model', function() {
           expect(error.errors.level.message).to.equal('Please Provide a Level Attribute');
         })
       })
+      it('Should Throw a Validation Error If Invalid Level is Provided', function() {
+        const newSpell = new Spell({
+          name: 'Fireball',
+          description: 'A Ball of Fire',
+          level: 11
+        })
+
+        newSpell.validate(function(error) {
+          expect(error.errors.level).to.exist
+          expect(error.errors.level.kind).to.equal('enum')
+        })
+      })
     })
     describe('School Attribute', function() {
       it('Should Return an Object with a School Attribute', function() {

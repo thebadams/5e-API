@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const spellLevels = require('../constants/spellLevels')
 
 const spellSchema = new Schema({
   name: {
@@ -13,7 +14,8 @@ const spellSchema = new Schema({
   
   level: {
     type: Number,
-    required: [true, 'Please Provide a Level Attribute']
+    required: [true, 'Please Provide a Level Attribute'],
+    enum: spellLevels
   },
 
   school: {
