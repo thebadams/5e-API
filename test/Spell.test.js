@@ -100,6 +100,20 @@ describe('Spell Model', function() {
           expect(error.errors.school.message).to.equal('Please Provide a Spell School');
         })
       })
+      it('Should Throw A Validation Error If Invalid School Is Provided', function() {
+        const badSpellInfo = {
+          name: 'Fireball',
+          description: 'A Ball of Fire',
+          level: 3,
+          school: 'Evoction'
+        }
+
+        const newSpell = new Spell(badSpellInfo);
+        newSpell.validate(function(error) {
+          expect(error.errors.school).to.exist
+          expect(error.errors.school.kind).to.equal('enum')
+        })
+      })
     })
     describe('Casting Time Attribute', function() {
       it('Should Return an Object With The Action Attribute', function() {
