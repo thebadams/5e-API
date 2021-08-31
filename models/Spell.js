@@ -36,7 +36,8 @@ const spellSchema = new Schema({
   },
   
   components: {
-    type: Object
+    type: Object,
+    required: [true, 'Please Provide Components For The Spell']
   }
 })
 

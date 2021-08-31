@@ -211,7 +211,27 @@ describe('Spell Model', function() {
       expect(newSpell.components.m).to.be.an('object').with.a.property('materials')
       expect(newSpell.components.m.materials).to.be.a('string')
       expect(newSpell.components.m.materials).to.equal('A tiny ball of bat guano and sulfur')
-    })
+      })
+      it('Should Throw A Validation Error If No Components Are Provided', function() {
+        const badSpellInfo = {
+          name: 'Fireball',
+          description: 'A Ball of Fire',
+          level: 3,
+          school: 'Evocation',
+          castingTime: '1 Action',
+          range: '150 Feet',
+          compnents: {
+
+          }
+        }
+
+        const newSpell = new Spell(badSpellInfo);
+        newSpell.validate(function(error) {
+          expect(error.errors.components).to.exist;
+          expect(error.errors.components.message).to.equal('Please Provide Components For The Spell')
+        })
+      })
+
       })
       
   })
