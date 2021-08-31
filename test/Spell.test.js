@@ -180,6 +180,40 @@ describe('Spell Model', function() {
         })
       })
     })
+    describe('Materials Attribute', function() {
+      it('Should Return An Object With the Materials Property', function() {
+        const components = {
+        v: true,
+        s: true,
+        m: {
+          materials: 'A tiny ball of bat guano and sulfur'
+        }
+      }
+      const spellInfo = {
+        name: 'Fireball',
+        description: 'A Ball of Fire',
+        level: 3,
+        school: 'Evocation',
+        castingTime: '1 Action',
+        range: '150 feet',
+        components: components
+      }
+
+      const newSpell = new Spell(spellInfo);
+
+      expect(newSpell).to.have.a.property('components');
+      expect(newSpell.components).to.be.an('object')
+      expect(newSpell.components).to.have.a.property('v')
+      expect(newSpell.components).to.have.a.property('s')
+      expect(newSpell.components).to.have.a.property('m')
+      expect(newSpell.components.v).to.be.a('boolean')
+      expect(newSpell.components.s).to.be.a('boolean')
+      expect(newSpell.components.m).to.be.an('object').with.a.property('materials')
+      expect(newSpell.components.m.materials).to.be.a('string')
+      expect(newSpell.components.m.materials).to.equal('A tiny ball of bat guano and sulfur')
+    })
+      })
+      
   })
   
 })

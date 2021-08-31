@@ -33,6 +33,10 @@ const spellSchema = new Schema({
   range: {
     type: String,
     required: [true, 'Please Provide A Range Value']
+  },
+  
+  components: {
+    type: Object
   }
 })
 
