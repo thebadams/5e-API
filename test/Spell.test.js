@@ -236,5 +236,55 @@ describe('Spell Model', function () {
         });
       });
     });
+    describe('Duration Attribute', function () {
+      it('Should Return An Object With A Duration Property', function () {
+        const spellInfo = {
+          name: 'Fireball',
+          description: 'A Ball of Fire',
+          level: 3,
+          castingTime: '1 Action',
+          range: '60 Feet',
+          components: {
+          v: true,
+          s: true,
+          m: {
+            materials: 'A tiny ball of bat guano and sulfur',
+          },
+        },
+         duration: 'Instantaneous'
+      }
+
+      const newSpell = new Spell(spellInfo);
+      expect(newSpell).to.have.property('duration')
+      expect(newSpell.duration).to.be.a('string')
+      expect(newSpell.duration).to.equal('Instantaneous')
+      })
+      it('Should Throw a Validation Error If No Duration is Passed In', function () {
+       const components = {
+          v: true,
+          s: true,
+          m: {
+            materials: 'Stuff'
+          }
+        }
+
+      const badSpellInfo = {
+        name: 'Fireball',
+        description: 'A Ball of Fire',
+        level: 3,
+        school: 'Evocation',
+        castingTime: '1 Action',
+        range: '60 Feet',
+        components,
+        durtiuon: 'Instantaneous'
+      }
+
+      const newSpell = new Spell(badSpellInfo);
+      newSpell.validate(function(error) {
+        expect(error.errors.duration).to.exist
+        expect(error.errors.duration.message).to.equal('Please Provide a Duration For the Spell')
+      })
+      })
+    });
   });
 });

@@ -38,6 +38,11 @@ const spellSchema = new Schema({
   components: {
     type: Object,
     required: [true, 'Please Provide Components For The Spell']
+  },
+  
+  duration: {
+    type: String,
+    required: [true, 'Please Provide a Duration For the Spell']
   }
 })
 
