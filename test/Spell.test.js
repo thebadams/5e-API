@@ -313,6 +313,62 @@ describe('Spell Model', function () {
         expect(newSpell.higherLevels).to.be.a('string')
         expect(newSpell.higherLevels).to.equal('At Higher Levels, Do Extra Damage');
       });
+    });
+    describe('Sources Attribute', function () {
+      it('Should Return an Object With a Sources Property', function () {
+         const components = {
+          v: true,
+          s: true,
+          m: {
+            materials: 'A tiny ball of bat guano and sulfur',
+          },
+        };
+
+        const spellInfo = {
+          name: 'Fireball',
+          description: 'A Ball of Fire',
+          level: 3,
+          school: 'Evocation',
+          castingTime: '1 Action',
+          range: '150 Feet',
+          components,
+          duration: 'Instantaneous',
+          higherLevels: 'At Higher Levels, Do Extra Damage',
+          sources: ['SRD']
+        };
+
+        const newSpell = new Spell(spellInfo);
+        expect(newSpell).to.have.a.property('sources')
+        expect(newSpell.sources).to.be.an('array').with.length.greaterThanOrEqual(1);
+        expect(newSpell.sources[0]).to.equal('SRD');
+      });
+      // it('Should Throw a Validation Error if A Source Array is Not Provided', function () {
+      //   const badSpellInfo = {
+      //     name: 'Fireball',
+      //     description: 'A Ball of Fire',
+      //     level: 3,
+      //     school: 'Evocation',
+      //     castingTime: '1 Action',
+      //     range: '150 Feet',
+      //     components: {
+      //       v: true,
+      //       s: true,
+      //       m: {
+      //         materials: 'Bat Guano'
+      //       },
+           
+      //     },
+      //     durtion: 'Instantaneous',
+      //     higherLevels: 'At Higher Levels',
+      //     source: ['SRD']
+      //   }
+      //   const newSpell = new Spell(badSpellInfo);
+      //   newSpell.validate(function (error) {
+      //     console.log(error)
+      //     expect(error.errors.sources).to.exist;
+      //     expect(error.errors.components.message).to.equal('Pleae Provide At Least 1 Source');
+      //   });
+      // })
     })
   });
 });

@@ -44,8 +44,14 @@ const spellSchema = new Schema({
     type: String,
     required: [true, 'Please Provide a Duration For the Spell']
   },
+
   higherLevels: {
-    type: String
+    type: String,
+  },
+
+  sources: {
+    type: [String],
+    required: true
   }
 })
 
