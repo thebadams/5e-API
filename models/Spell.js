@@ -43,6 +43,9 @@ const spellSchema = new Schema({
   duration: {
     type: String,
     required: [true, 'Please Provide a Duration For the Spell']
+  },
+  higherLevels: {
+    type: String
   }
 })
 

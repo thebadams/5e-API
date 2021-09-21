@@ -286,5 +286,33 @@ describe('Spell Model', function () {
       })
       })
     });
+    describe('Higher Levels Attribute', function () {
+      it('Should Return an Object With the Higher Levels property', function () {
+        const components = {
+          v: true,
+          s: true,
+          m: {
+            materials: 'A tiny ball of bat guano and sulfur',
+          },
+        };
+
+        const spellInfo = {
+          name: 'Fireball',
+          description: 'A Ball of Fire',
+          level: 3,
+          school: 'Evocation',
+          castingTime: '1 Action',
+          range: '150 Feet',
+          components,
+          duration: 'Instantaneous',
+          higherLevels: 'At Higher Levels, Do Extra Damage',
+        };
+
+        const newSpell = new Spell(spellInfo);
+        expect(newSpell).to.have.property('higherLevels');
+        expect(newSpell.higherLevels).to.be.a('string')
+        expect(newSpell.higherLevels).to.equal('At Higher Levels, Do Extra Damage');
+      });
+    })
   });
 });
