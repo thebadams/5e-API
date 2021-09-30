@@ -52,6 +52,11 @@ const spellSchema = new Schema({
   sources: {
     type: [String],
     required: true
+  },
+
+  concentration: {
+    type: Boolean,
+    required: [true, 'Please Provide a Concentration True Or False Value']
   }
 })
 

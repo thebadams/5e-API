@@ -370,5 +370,64 @@ describe('Spell Model', function () {
       //   });
       // })
     })
+    describe('Concentration Attribute', function () {
+      it('Should Return an Object With a Concentration Attribute That is a Boolean', function () {
+                 const components = {
+          v: true,
+          s: true,
+          m: {
+            materials: 'A tiny ball of bat guano and sulfur',
+          },
+        };
+
+        const spellInfo = {
+          name: 'Fireball',
+          description: 'A Ball of Fire',
+          level: 3,
+          school: 'Evocation',
+          castingTime: '1 Action',
+          range: '150 Feet',
+          components,
+          duration: 'Instantaneous',
+          higherLevels: 'At Higher Levels, Do Extra Damage',
+          sources: ['SRD'],
+          concentration: false
+        };
+
+        const newSpell = new Spell(spellInfo);
+
+        expect(newSpell).to.have.property('concentration')
+        expect(newSpell.concentration).to.be.a('boolean')
+        expect(newSpell.concentration).to.equal(false);
+      })
+      it('Should Throw a Validation Error If No Concentration Value Is Provided', function () {
+                 const components = {
+          v: true,
+          s: true,
+          m: {
+            materials: 'A tiny ball of bat guano and sulfur',
+          },
+        };
+
+        const spellInfo = {
+          name: 'Fireball',
+          description: 'A Ball of Fire',
+          level: 3,
+          school: 'Evocation',
+          castingTime: '1 Action',
+          range: '150 Feet',
+          components,
+          duration: 'Instantaneous',
+          higherLevels: 'At Higher Levels, Do Extra Damage',
+          sources: ['SRD']
+        };
+
+        const newSpell = new Spell(spellInfo);
+        newSpell.validate(function(error) {
+          expect(error.errors.concentration).to.exist;
+          expect(error.errors.concentration.message).to.equal('Please Provide a Concentration True Or False Value');
+        })
+      })
+    })
   });
 });
